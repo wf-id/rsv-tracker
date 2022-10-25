@@ -64,3 +64,6 @@ table3_combined$week <- as.Date(table3_combined$week, "%m/%d/%y")
 
 table3_combined$update_dts <- start_time
 
+data.table::fwrite(table1_combined, here::here("data", sprintf("%s-3wk-antigen.csv", start_time)))
+data.table::fwrite(table2_combined, here::here("data", sprintf("%s-5wk-pcr.csv", start_time)))
+data.table::fwrite(table3_combined, here::here("data", sprintf("%s-3wk-combined.csv", start_time)))

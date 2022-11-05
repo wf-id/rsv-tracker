@@ -5,7 +5,7 @@ on:
 #      paths:
 #        - DESCRIPTION
   schedule:
-    - cron:  '30 16 * * 6'
+    - cron:  '30 19 * * 6'
 
 jobs:
   build:

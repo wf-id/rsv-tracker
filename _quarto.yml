@@ -1,0 +1,10 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+format:
+  html:
+    toc: true
+    code-copy: true
+    code-overflow: wrap

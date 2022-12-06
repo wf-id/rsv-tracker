@@ -43,7 +43,7 @@ states_to_select_use = {
 viewof islands = Inputs.select(["NC"].concat(states_to_select_use), {
   multiple: true, 
   label: "State", 
-  initialValue: ["NC"],
+  value: ["NC"],
   sort: true, 
   unique: true})
   
@@ -55,7 +55,7 @@ viewof islands = Inputs.select(["NC"].concat(states_to_select_use), {
 viewof start = Inputs.date({label: "Start date", value: "2022-01-02"})
 ```
 
-
+<br>
 
 
 ```{ojs}

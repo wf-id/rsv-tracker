@@ -93,7 +93,12 @@ Plot.plot({
   x: {
     label: "Week Number"
   },
+  facet : {
+    data: filtered,
+    x: "state"
+  },
   marks: [
+    Plot.frame(),
     Plot.line(filtered, {
     x: "epi_week", 
     y: "percent_positive", 

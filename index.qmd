@@ -6,12 +6,72 @@ format: html
 Under construction.
 
 ```{ojs}
-overall = {
-  const co2data = await FileAttachment('https://raw.githubusercontent.com/wf-id/us-mpx/main/output/us-incidence.csv')
+data = {
+  const co2data = await FileAttachment('https://raw.githubusercontent.com/wf-id/us-mpx/main/output/mpx.csv')
     .csv({ typed: true });
   return co2data.map(d => { 
-    d["Date"] = Date(d["ReportDT"]);
+    d["Label"] = d["state"] + ' ' + d["percent_positive"];
     return d; 
   });
 }
+```
+
+
+```{ojs}
+//| eval: true
+viewof islands = Inputs.select(data.map(d => d.StateDSC), {
+  multiple: true, 
+  label: "StateDSC", 
+  initialValue: "Alabama",
+  sort: true, 
+  unique: true})
+  
+ //islands
+```
+
+```{ojs}
+viewof start = Inputs.date({label: "Start date", value: "2022-01-02"})
+```
+
+
+
+
+```{ojs}
+//#| eval: true
+Plot.plot({
+  y: {
+    grid: true,
+    label: "RSV PCR Positivity"
+  },
+  marks: [
+    Plot.line(filtered2, {
+    x: "week", 
+    y: "percent_positive", 
+    stroke: "state"}),
+    Plot.text(filtered2, Plot.selectLast({
+    x: "week",
+    y: "percent_positive",
+    z: "state",
+    text: "state",
+    textAnchor: "CasesCumulativeCNT",
+    })
+    ),
+  ]
+});
+```
+
+
+```{ojs}
+filtered = data.filter(function(data) {
+  return islands.includes(data.state);
+});
+```
+
+```{ojs}
+filtered2 = filtered.filter(d => d.week >= start);
+```
+
+
+```{ojs}
+Inputs.table(filtered2)
 ```

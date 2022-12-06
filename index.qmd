@@ -43,7 +43,7 @@ states_to_select_use = {
 viewof islands = Inputs.select(["NC"].concat(states_to_select_use), {
   multiple: true, 
   label: "State", 
-  initialValue: "NC",
+  initialValue: ["NC"],
   sort: true, 
   unique: true})
   

@@ -40,7 +40,7 @@ states_to_select_use = {
 
 ```{ojs}
 //| eval: true
-viewof islands = Inputs.select(states_to_select_use, {
+viewof islands = Inputs.select(["NC"].concat(states_to_select_use), {
   multiple: true, 
   label: "State", 
   initialValue: "NC",

@@ -29,7 +29,7 @@ states_to_select = data.map(d => d.state)
 
 ```{ojs}
 states_to_select_use = {
-    if(states_to_select == null){
+    if(states_to_select === null){
         return ["NC"]
     } else {
         return states_to_select

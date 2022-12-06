@@ -76,7 +76,7 @@ Plot.plot({
   },
   x: {
     label: "Week Number"
-  }
+  },
   marks: [
     Plot.line(filtered, {
     x: "epi_week", 

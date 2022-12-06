@@ -1,5 +1,9 @@
 ---
 title: "RSV Trenders"
+execute:
+  eval: true
+  echo: false
+  message: false
 format: html
 ---
 

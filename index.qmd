@@ -24,7 +24,7 @@ Select the desired dates:
 
 ```{ojs}
 //| eval: true
-viewof islands = Inputs.select(["NC",data.map(d => d.state)], {
+viewof islands = Inputs.select(,data.map(d => ["NC", d.state]), {
   multiple: true, 
   label: "State", 
   initialValue: "NC",

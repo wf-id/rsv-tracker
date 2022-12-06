@@ -1,9 +1,9 @@
 name: Update with Latest Data
 
 on:
-  push:
-      paths:
-        - index.qmd
+#  push:
+#      paths:
+#        - DESCRIPTION
   schedule:
     - cron:  '30 19 * * 6'
 
@@ -65,9 +65,6 @@ jobs:
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
         run: |-
           Rscript -e "source('scrape.R')"
-      - name: Aggregate results
-        run: |-
-          Rscript -e "source('aggregate.R')"
       - run: |
           quarto --version
       - name: quarto

@@ -39,21 +39,6 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
           GITHUB_PAT: ${{secrets.PAT}}
-        run: |
-          Rscript -e "remotes::install_github('r-hub/sysreqs', auth_toke = '${{secrets.GITHUB_TOKEN}}')"
-          Rscript -e "install.packages('stringi', type='source')"
-          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
-          sudo -s eval "$sysreqs"
-      - name: Install dependencies
-        run: |
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-        shell: Rscript {0}
-      - name: Session info
-        run: |
-          options(width = 100)
-          pkgs <- installed.packages()[, "Package"]
-          sessioninfo::session_info(pkgs, include_base = TRUE)
       - run: |
           quarto --version
       - name: quarto

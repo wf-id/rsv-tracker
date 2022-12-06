@@ -20,46 +20,26 @@ data = {
 }
 ```
 
+Select the desired dates:
 
 ```{ojs}
 //| eval: true
 viewof islands = Inputs.select(data.map(d => d.state), {
   multiple: true, 
   label: "State", 
-  initialValue: "North Carolina",
+  initialValue: "NC",
   sort: true, 
   unique: true})
   
  //islands
 ```
 
+
 ```{ojs}
 viewof start = Inputs.date({label: "Start date", value: "2022-01-02"})
 ```
 
-```{ojs}
-//#| eval: true
-Plot.plot({
-  y: {
-    grid: true,
-    label: "RSV PCR Positivity"
-  },
-  marks: [
-    Plot.line(data, {
-    x: "week", 
-    y: "percent_positive", 
-    stroke: "state"}),
-    Plot.text(data, Plot.selectLast({
-    x: "week",
-    y: "percent_positive",
-    z: "state",
-    text: "state",
-    textAnchor: "CasesCumulativeCNT",
-    })
-    ),
-  ]
-});
-```
+
 
 
 ```{ojs}
@@ -88,6 +68,34 @@ Plot.plot({
 
 
 ```{ojs}
+//#| eval: true
+Plot.plot({
+  y: {
+    grid: true,
+    label: "RSV PCR Positivity"
+  },
+  x: {
+    label: "Week Number"
+  }
+  marks: [
+    Plot.line(filtered, {
+    x: "epi_week", 
+    y: "percent_positive", 
+    stroke: "state"}),
+    Plot.text(filtered, Plot.selectLast({
+    x: "epi_week",
+    y: "percent_positive",
+    z: "epi_year",
+    text: "epi_year",
+    textAnchor: "CasesCumulativeCNT",
+    })
+    ),
+  ]
+});
+```
+
+
+```{ojs}
 filtered = data.filter(function(data) {
   return islands.includes(data.state);
 });
@@ -100,8 +108,4 @@ filtered2 = filtered.filter(d => d.week >= start);
 
 ```{ojs}
 Inputs.table(filtered2)
-```
-
-```{ojs}
-Inputs.table(filtered)
 ```

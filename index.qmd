@@ -11,7 +11,7 @@ format: html
 
 ```{ojs}
 data = {
-  const co2data = await FileAttachment('https://raw.githubusercontent.com/wf-id/us-mpx/main/output/mpx.csv')
+  const co2data = await FileAttachment('https://raw.githubusercontent.com/wf-id/rsv-tracker/main/output/rsv_all_combined_latest.csv')
     .csv({ typed: true });
   return co2data.map(d => { 
     d["Label"] = d["state"] + ' ' + d["percent_positive"];
@@ -23,10 +23,10 @@ data = {
 
 ```{ojs}
 //| eval: true
-viewof islands = Inputs.select(data.map(d => d.StateDSC), {
+viewof islands = Inputs.select(data.map(d => d.state), {
   multiple: true, 
-  label: "StateDSC", 
-  initialValue: "Alabama",
+  label: "State", 
+  initialValue: "North Carolina",
   sort: true, 
   unique: true})
   

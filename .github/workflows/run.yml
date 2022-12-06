@@ -65,6 +65,9 @@ jobs:
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
         run: |-
           Rscript -e "source('scrape.R')"
+      - name: Aggregate results
+        run: |-
+          Rscript -e "source('aggregate.R')"
       - run: |
           quarto --version
       - name: quarto

@@ -4,3 +4,14 @@ format: html
 ---
 
 Under construction.
+
+```{ojs}
+overall = {
+  const co2data = await FileAttachment('https://raw.githubusercontent.com/wf-id/us-mpx/main/output/us-incidence.csv')
+    .csv({ typed: true });
+  return co2data.map(d => { 
+    d["Date"] = Date(d["ReportDT"]);
+    return d; 
+  });
+}
+```

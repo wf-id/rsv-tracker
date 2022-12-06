@@ -123,5 +123,21 @@ filtered2 = filtered.filter(d => d.week >= start);
 
 
 ```{ojs}
-Inputs.table(filtered2)
+Inputs.table(filtered2, {
+    columns : [
+        "week",
+        "state",
+        "percent_positive",
+        "total_pcr_tests",
+        "pcr_detections"
+    ],
+    header : {
+        week: "Reporting Week",
+        state: "State",
+        percent_positive: "Percent Positive",
+        total_pcr_tests: "Total PCR Tests",
+        pcr_detections: "Total PCR Positive"
+
+    }
+})
 ```

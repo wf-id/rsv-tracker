@@ -24,7 +24,7 @@ Select the desired dates:
 
 ```{ojs}
 //| eval: true
-viewof islands = Inputs.select(data.map(d => d.state), {
+viewof islands = Inputs.select(["NC",data.map(d => d.state)], {
   multiple: true, 
   label: "State", 
   initialValue: "NC",
@@ -72,7 +72,7 @@ Plot.plot({
 Plot.plot({
   y: {
     grid: true,
-    label: "RSV PCR Positivity"
+    label: "RSV PCR Positivity Yearly Comparisons"
   },
   x: {
     label: "Week Number"
@@ -81,7 +81,7 @@ Plot.plot({
     Plot.line(filtered, {
     x: "epi_week", 
     y: "percent_positive", 
-    stroke: "state"}),
+    stroke: "epi_year"}),
     Plot.text(filtered, Plot.selectLast({
     x: "epi_week",
     y: "percent_positive",

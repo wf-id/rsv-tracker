@@ -25,4 +25,8 @@ combined_combined <- combined_combined[order(state, week)][,.SD[tail(1)], by = c
 
 combined_combined_all <- merge(combined, combined_combined)
 
+combined_combined_all[,epi_week := lubridate::epiweek(week)]
+combined_combined_all[,epi_year := lubridate::epiyear(week)]
+
+
 fwrite(combined_combined_all, here::here("output", "rsv_all_combined_latest.csv"))

@@ -20,8 +20,13 @@ data = {
 }
 ```
 
-Select the desired dates:
 
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+
+Select the desired state to display. Note that you can select multiple states by clicking with the "shift key."
 
 ```{ojs}
 states_to_select = data.map(d => d.state)
@@ -38,6 +43,7 @@ states_to_select_use = {
 ```
 
 
+
 ```{ojs}
 //| eval: true
 viewof islands = Inputs.select(["NC"].concat(states_to_select_use), {
@@ -50,10 +56,16 @@ viewof islands = Inputs.select(["NC"].concat(states_to_select_use), {
  //islands
 ```
 
+:::
+
+::: {.g-col-12 .g-col-md-6}
 
 ```{ojs}
 viewof start = Inputs.date({label: "Start date", value: "2022-01-02"})
 ```
+:::
+
+::::
 
 <br>
 

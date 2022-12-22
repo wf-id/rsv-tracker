@@ -1,5 +1,5 @@
 ---
-title: "RSV Trenders"
+title: "RSV Trends"
 execute:
   eval: true
   echo: false
@@ -26,7 +26,7 @@ data = {
 
 ::: {.g-col-12 .g-col-md-6}
 
-Select the desired state to display. Note that you can select multiple states by clicking with the "shift key."
+Select the desired state to display. Note that you can select multiple states by clicking with the "ctrl key."
 
 ```{ojs}
 states_to_select = data.map(d => d.state)

@@ -32,7 +32,7 @@ table1_combined[,1] <- NULL
 
 names(table1_combined) <- c("week", "state", "percent_positive", "total_antigen_detection_tests")
 
-table1_combined$week <- as.Date(table1_combined$week, "%m/%d/%y")
+table1_combined$week <- as.Date(table1_combined$week, "%Y-%m-%d")
 
 table1_combined$update_dts <- start_time
 
@@ -46,7 +46,9 @@ table2_combined[,1] <- NULL
 
 names(table2_combined) <- c("week", "state", "percent_positive", "total_pcr_tests")
 
-table2_combined$week <- as.Date(table2_combined$week, "%m/%d/%y")
+#table2_combined$week <- as.Date(table2_combined$week, "%m/%d/%y")
+
+table2_combined$week <- as.Date(table2_combined$week, "%Y-%m-%d")
 
 table2_combined$update_dts <- start_time
 

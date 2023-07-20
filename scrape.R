@@ -62,7 +62,7 @@ table3_combined[,1] <- NULL
 
 names(table3_combined) <- c("week", "state", "antigen_detections", "pcr_detections")
 
-table3_combined$week <- as.Date(table3_combined$week, "%m/%d/%y")
+table3_combined$week <- as.Date(table3_combined$week, "%Y-%m-%d")
 
 table3_combined$update_dts <- start_time
 

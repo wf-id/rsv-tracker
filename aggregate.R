@@ -1,7 +1,7 @@
 
 library(data.table)
 
-data.table::rbindlist(lapply(fs::dir_ls("data", glob = "*5wk-pcr.csv"), data.table::fread))->combined
+data.table::rbindlist(lapply(fs::dir_ls("data", glob = "*5wk-pcr.csv"), data.table::fread),fill=FALSE)->combined
 
 
 data.table::setorderv(combined, c("state", "week"))
@@ -13,7 +13,7 @@ combined_latest <- combined[order(state, week)][,.SD[tail(1)], by = c("week", "s
 fwrite(combined_latest, here::here("output", "rsv_5wk_pcr_latest.csv"))
 
 
-combined_combined <- data.table::rbindlist(lapply(fs::dir_ls("data", glob = "*3wk-combined.csv"), data.table::fread))
+combined_combined <- data.table::rbindlist(lapply(fs::dir_ls("data", glob = "*3wk-combined.csv"), data.table::fread),fill=FALSE)
 
 
 data.table::setorderv(combined_combined, c("state", "week"))

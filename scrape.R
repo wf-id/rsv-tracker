@@ -32,7 +32,7 @@ table1_combined[,1] <- NULL
 
 names(table1_combined) <- c("week", "state", "percent_positive", "total_antigen_detection_tests")
 
-table1_combined$week <- as.Date(table1_combined$week, "%Y-%m-%d")
+table1_combined$week <- lubridate::mdy(table1_combined$week)
 
 table1_combined$update_dts <- start_time
 
@@ -48,7 +48,7 @@ names(table2_combined) <- c("week", "state", "percent_positive", "total_pcr_test
 
 #table2_combined$week <- as.Date(table2_combined$week, "%m/%d/%y")
 
-table2_combined$week <- as.Date(table2_combined$week, "%Y-%m-%d")
+table2_combined$week <- lubridate::mdy(table2_combined$week)
 
 table2_combined$update_dts <- start_time
 
@@ -62,7 +62,7 @@ table3_combined[,1] <- NULL
 
 names(table3_combined) <- c("week", "state", "antigen_detections", "pcr_detections")
 
-table3_combined$week <- as.Date(table3_combined$week, "%Y-%m-%d")
+table3_combined$week <- lubridate::mdy(table3_combined$week)
 
 table3_combined$update_dts <- start_time
 

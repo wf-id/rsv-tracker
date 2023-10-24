@@ -32,7 +32,15 @@ table1_combined[,1] <- NULL
 
 names(table1_combined) <- c("week", "state", "percent_positive", "total_antigen_detection_tests")
 
-table1_combined$week <- lubridate::mdy(table1_combined$week)
+
+date_use <- switch(which(!is.na(
+  c(lubridate::mdy(table1_combined$week[1]),
+  lubridate::ymd(table1_combined$week[1])))),
+  `1` = lubridate::mdy,
+  `2` = lubridate::ymd)
+
+
+table1_combined$week <- date_use(table1_combined$week)
 
 table1_combined$update_dts <- start_time
 
@@ -48,7 +56,14 @@ names(table2_combined) <- c("week", "state", "percent_positive", "total_pcr_test
 
 #table2_combined$week <- as.Date(table2_combined$week, "%m/%d/%y")
 
-table2_combined$week <- lubridate::mdy(table2_combined$week)
+date_use <- switch(which(!is.na(
+  c(lubridate::mdy(table2_combined$week[1]),
+  lubridate::ymd(table2_combined$week[1])))),
+  `1` = lubridate::mdy,
+  `2` = lubridate::ymd)
+
+
+table2_combined$week <- date_use(table2_combined$week)
 
 table2_combined$update_dts <- start_time
 
@@ -62,7 +77,15 @@ table3_combined[,1] <- NULL
 
 names(table3_combined) <- c("week", "state", "antigen_detections", "pcr_detections")
 
-table3_combined$week <- lubridate::mdy(table3_combined$week)
+date_use <- switch(which(!is.na(
+  c(lubridate::mdy(table3_combined$week[1]),
+  lubridate::ymd(table3_combined$week[1])))),
+  `1` = lubridate::mdy,
+  `2` = lubridate::ymd)
+
+
+table3_combined$week <- date_use(table3_combined$week)
+
 
 table3_combined$update_dts <- start_time
 

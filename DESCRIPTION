@@ -5,4 +5,5 @@ imports:
   here,
   fs,
   lubridate,
-  remotes
+  remotes,
+  session_info

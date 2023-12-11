@@ -33,11 +33,11 @@ table1_combined[,1] <- NULL
 names(table1_combined) <- c("week", "state", "percent_positive", "total_antigen_detection_tests")
 
 
-date_use <- switch(which(!is.na(
-  c(lubridate::mdy(table1_combined$week[1]),
-  lubridate::ymd(table1_combined$week[1])))),
-  `1` = lubridate::mdy,
-  `2` = lubridate::ymd)
+date_use <- if(as.numeric(sub("^(\\d{2,4}).*", "\\1", table1_combined$week[1]))<13){
+  lubridate::mdy
+} else {
+  lubridate::ymd
+}
 
 
 table1_combined$week <- date_use(table1_combined$week)
@@ -56,13 +56,6 @@ names(table2_combined) <- c("week", "state", "percent_positive", "total_pcr_test
 
 #table2_combined$week <- as.Date(table2_combined$week, "%m/%d/%y")
 
-date_use <- switch(which(!is.na(
-  c(lubridate::mdy(table2_combined$week[1]),
-  lubridate::ymd(table2_combined$week[1])))),
-  `1` = lubridate::mdy,
-  `2` = lubridate::ymd)
-
-
 table2_combined$week <- date_use(table2_combined$week)
 
 table2_combined$update_dts <- start_time
@@ -77,13 +70,6 @@ table3_combined[,1] <- NULL
 
 names(table3_combined) <- c("week", "state", "antigen_detections", "pcr_detections")
 
-date_use <- switch(which(!is.na(
-  c(lubridate::mdy(table3_combined$week[1]),
-  lubridate::ymd(table3_combined$week[1])))),
-  `1` = lubridate::mdy,
-  `2` = lubridate::ymd)
-
-
 table3_combined$week <- date_use(table3_combined$week)
 
 
@@ -92,3 +78,4 @@ table3_combined$update_dts <- start_time
 data.table::fwrite(table1_combined, here::here("data", sprintf("%s-3wk-antigen.csv", start_time)))
 data.table::fwrite(table2_combined, here::here("data", sprintf("%s-5wk-pcr.csv", start_time)))
 data.table::fwrite(table3_combined, here::here("data", sprintf("%s-3wk-combined.csv", start_time)))
+

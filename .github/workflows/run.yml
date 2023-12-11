@@ -49,7 +49,7 @@ jobs:
         run: |
           options(width = 110)
           pkgs <- installed.packages()[, "Package"]
-          sessioninfo::session_info(pkgs, include_base = TRUE)
+          pkgs
         shell: Rscript {0}
       - name: Run script
         env:

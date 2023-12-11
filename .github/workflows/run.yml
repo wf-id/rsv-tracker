@@ -47,7 +47,7 @@ jobs:
           sudo -s eval "$sysreqs"
       - name: Session info
         run: |
-          options(width = 100)
+          options(width = 110)
           pkgs <- installed.packages()[, "Package"]
           sessioninfo::session_info(pkgs, include_base = TRUE)
         shell: Rscript {0}

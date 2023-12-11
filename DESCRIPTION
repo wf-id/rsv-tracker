@@ -4,4 +4,5 @@ imports:
   stringi,
   here,
   fs,
-  lubridate
+  lubridate,
+  remotes

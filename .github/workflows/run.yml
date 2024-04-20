@@ -42,9 +42,9 @@ jobs:
           GITHUB_PAT: ${{secrets.PAT}}
         run: |
           ./run.sh install_all
-          Rscript -e "remotes::install_github('r-hub/sysreqs', auth_toke = '${{secrets.GITHUB_TOKEN}}')"
-          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
-          sudo -s eval "$sysreqs"
+         # Rscript -e "remotes::install_github('r-hub/sysreqs', auth_toke = '${{secrets.GITHUB_TOKEN}}')"
+          # sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+        #  sudo -s eval "$sysreqs"
       - name: Session info
         run: |
           options(width = 110)
